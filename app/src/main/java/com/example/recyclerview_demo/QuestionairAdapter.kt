@@ -5,10 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
-import com.example.R
-import com.example.databinding.QuestionnaireItemLayoutBinding
+import com.example.jetpackbestpractice.R
+import com.example.jetpackbestpractice.databinding.QuestionnaireItemLayoutBinding
 
 class QuestionnaireAdapter(private val context: Context?) :
     RecyclerView.Adapter<QuestionnaireViewHolder>() {

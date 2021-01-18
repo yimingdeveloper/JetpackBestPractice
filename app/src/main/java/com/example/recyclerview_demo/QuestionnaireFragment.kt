@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.databinding.QuestionnaireListLayoutBinding
+import com.example.jetpackbestpractice.databinding.QuestionnaireListLayoutBinding
 
 class QuestionnaireFragment : Fragment() {
 
@@ -22,7 +22,7 @@ class QuestionnaireFragment : Fragment() {
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         mBinding = QuestionnaireListLayoutBinding.inflate(inflater)
-        mBinding?.viewModel = ViewModelProviders.of(this).get(QuestionnaireViewModel::class.java)
+        mBinding?.viewModel = ViewModelProvider(this).get(QuestionnaireViewModel::class.java)
         mBinding?.lifecycleOwner = this
         return mBinding?.root
     }
