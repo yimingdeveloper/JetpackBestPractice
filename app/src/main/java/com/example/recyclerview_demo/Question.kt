@@ -1,4 +1,4 @@
-package com.oceanlong.moment.recyclerview_demo
+package com.example.recyclerview_demo
 
 data class Question(
     val question: String,

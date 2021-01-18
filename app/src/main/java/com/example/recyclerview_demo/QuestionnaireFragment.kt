@@ -1,4 +1,4 @@
-package com.oceanlong.moment.recyclerview_demo
+package com.example.recyclerview_demo
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.oceanlong.moment.databinding.QuestionnaireListLayoutBinding
+import com.example.databinding.QuestionnaireListLayoutBinding
 
 class QuestionnaireFragment : Fragment() {
 

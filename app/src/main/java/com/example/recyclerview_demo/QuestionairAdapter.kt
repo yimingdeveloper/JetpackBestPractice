@@ -1,4 +1,4 @@
-package com.oceanlong.moment.recyclerview_demo
+package com.example.recyclerview_demo
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
-import com.oceanlong.moment.R
-import com.oceanlong.moment.databinding.QuestionnaireItemLayoutBinding
+import com.example.R
+import com.example.databinding.QuestionnaireItemLayoutBinding
 
 class QuestionnaireAdapter(private val context: Context?) :
     RecyclerView.Adapter<QuestionnaireViewHolder>() {
