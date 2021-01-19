@@ -41,10 +41,10 @@ class QuestionnaireViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView
     private var mBinding: QuestionnaireItemLayoutBinding? = null
     fun bind(question: Question) {
         mBinding = DataBindingUtil.bind(itemView)
-        mBinding?.apply {
-            viewModel = QuestionItemViewModel()
-            questionTitle.text = viewModel?.getQuestionText(question)?:""
-        }
+//        mBinding?.apply {
+//            viewModel = QuestionItemViewModel()
+//            questionTitle.text = viewModel?.getQuestionText(question)?:""
+//        }
 
     }
 }
