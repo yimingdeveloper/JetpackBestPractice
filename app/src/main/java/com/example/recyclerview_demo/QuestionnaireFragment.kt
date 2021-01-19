@@ -30,7 +30,7 @@ class QuestionnaireFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mBinding?.let { binding ->
-            binding.viewModel?.questionListModel?.observe(this, Observer { model ->
+            binding.viewModel?.questionListModel?.observe(viewLifecycleOwner, Observer { model ->
                 val dataList = model.questionList
                 mAdapter?.apply {
                     setDataList(dataList)

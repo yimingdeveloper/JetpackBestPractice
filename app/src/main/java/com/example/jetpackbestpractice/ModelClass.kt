@@ -1,6 +1,11 @@
 package com.example.jetpackbestpractice
 
+data class Questions(
+        val questions: List<Question>
+)
+
 data class Question(
-        val question: String,
-        val imageUrl: String
+        var question: String,
+        val imageUrl: String,
+        var answer: String
 )
