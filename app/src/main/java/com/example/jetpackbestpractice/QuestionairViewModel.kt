@@ -2,25 +2,26 @@ package com.example.jetpackbestpractice
 
 import androidx.lifecycle.*
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class QuestionairViewModel: ViewModel() {
 
     var taskNavigator: TaskNavigator? = null
 
-    val repository: Repository = Repository(Dispatchers.Main)
-    var questions = MutableLiveData<MutableList<Question>>()
+    val repository: Repository = Repository(Dispatchers.IO)
+    var questions: MutableLiveData<MutableList<Question>>? = null
 
-    var index = MutableLiveData(0)
-    var answer = MutableLiveData<String>()
+    val index = MutableLiveData(0)
+    val answer = MutableLiveData<String>()
 
-    var question = Transformations.map(index) {
-        questions.value?.get(index.value!!)?.question
+    val question = Transformations.map(index) {
+        index.value?.let { it1 -> questions?.value?.get(it1)?.question }
     }
 
     fun next() {
-        questions.value?.get(index!!.value!!)?.answer = answer.value.toString()
+        questions?.value?.get(index!!.value!!)?.answer = answer.value.toString()
 
-        val size = questions.value?.size
+        val size = questions?.value?.size
         if (size != null) {
             when(index.value) {
                 size - 1 -> jump()
@@ -28,7 +29,7 @@ class QuestionairViewModel: ViewModel() {
             }
         }
 
-        answer.value = questions.value?.get(index.value!!)?.answer
+        answer.value = questions?.value?.get(index.value!!)?.answer
     }
 
     fun jump() {
@@ -36,17 +37,20 @@ class QuestionairViewModel: ViewModel() {
     }
 
     fun pre() {
-        questions.value?.get(index!!.value!!)?.answer = answer.value.toString()
+        questions?.value?.get(index!!.value!!)?.answer = answer.value.toString()
 
         when(index.value) {
             0 -> return
             else -> index.value = index.value?.minus(1)
         }
 
-        answer.value = questions.value?.get(index.value!!)?.answer
+        answer.value = questions?.value?.get(index.value!!)?.answer
     }
 
     init {
-        questions = repository.read_json()
+        viewModelScope.launch {
+            questions = repository.list
+            repository.read_json()
+        }
     }
 }

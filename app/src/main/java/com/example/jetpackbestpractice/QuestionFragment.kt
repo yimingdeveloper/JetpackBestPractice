@@ -19,7 +19,6 @@ class QuestionFragment : Fragment(), TaskNavigator {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val binding = FragmentQuestionBinding.inflate(inflater, container, false)
         val viewmodel = ViewModelProvider(requireActivity()).get(QuestionairViewModel::class.java)
         viewmodel.taskNavigator = this

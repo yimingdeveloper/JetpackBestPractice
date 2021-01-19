@@ -23,7 +23,6 @@ class QuestionnaireAdapter(private val context: Context?) :
         val view =
             LayoutInflater.from(context).inflate(R.layout.questionnaire_item_layout, parent, false)
         return QuestionnaireViewHolder(view)
-
     }
 
     override fun getItemCount(): Int {
