@@ -6,6 +6,8 @@ import kotlinx.coroutines.launch
 
 class QuestionairViewModel: ViewModel() {
 
+    var itemClickListener: ItemClickListener? = null
+
     var taskNavigator: TaskNavigator? = null
 
     val repository: Repository = Repository(Dispatchers.IO)
