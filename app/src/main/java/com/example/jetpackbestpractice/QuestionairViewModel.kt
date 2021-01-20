@@ -7,12 +7,11 @@ import kotlinx.coroutines.launch
 class QuestionairViewModel: ViewModel() {
 
     var itemClickListener: ItemClickListener? = null
-
     var taskNavigator: TaskNavigator? = null
 
     val repository: Repository = Repository(Dispatchers.IO)
-    var questions: MutableLiveData<MutableList<Question>>? = null
 
+    var questions: MutableLiveData<MutableList<Question>>? = null
     val index = MutableLiveData(0)
     val answer = MutableLiveData<String>()
 
@@ -22,7 +21,6 @@ class QuestionairViewModel: ViewModel() {
 
     fun next() {
         questions?.value?.get(index!!.value!!)?.answer = answer.value.toString()
-
         val size = questions?.value?.size
         if (size != null) {
             when(index.value) {
@@ -30,7 +28,6 @@ class QuestionairViewModel: ViewModel() {
                 else -> index.value = index.value?.plus(1)
             }
         }
-
         answer.value = questions?.value?.get(index.value!!)?.answer
     }
 
@@ -40,12 +37,10 @@ class QuestionairViewModel: ViewModel() {
 
     fun pre() {
         questions?.value?.get(index!!.value!!)?.answer = answer.value.toString()
-
         when(index.value) {
             0 -> return
             else -> index.value = index.value?.minus(1)
         }
-
         answer.value = questions?.value?.get(index.value!!)?.answer
     }
 

@@ -6,9 +6,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jetpackbestpractice.databinding.QuestionnaireItemLayoutBinding
 
-class ShowCaseAdapter(private val list: MutableList<Question>, private val listener: ItemClickListener): RecyclerView.Adapter<ShowCaseAdapter.ShowCaseViewHolder>() {
-
-
+class ShowCaseAdapter(private val list: MutableList<Question>?, private val listener: ItemClickListener): RecyclerView.Adapter<ShowCaseAdapter.ShowCaseViewHolder>() {
 
     inner class ShowCaseViewHolder(val binding: QuestionnaireItemLayoutBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Question) {
@@ -23,13 +21,13 @@ class ShowCaseAdapter(private val list: MutableList<Question>, private val liste
     }
 
     override fun onBindViewHolder(holder: ShowCaseViewHolder, position: Int) {
-        holder.bind(list.get(position))
+        list?.get(position)?.let { holder.bind(it) }
         holder.binding.img.setOnClickListener {
-            listener.onItemClick(holder.binding.img, list[position], position)
+            list?.get(position)?.let { it1 -> listener.onItemClick(holder.binding.img, it1, position) }
         }
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return list?.size ?: 0
     }
 }

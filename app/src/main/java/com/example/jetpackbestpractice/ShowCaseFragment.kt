@@ -1,7 +1,6 @@
 package com.example.jetpackbestpractice
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -22,7 +21,7 @@ class ShowCaseFragment : Fragment(), ItemClickListener {
         viewModel.itemClickListener = this
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this
-        binding.recShowcase.adapter = ShowCaseAdapter(viewModel.questions?.value ?: mutableListOf(), this)
+        binding.recShowcase.adapter = ShowCaseAdapter(viewModel.questions?.value, this)
         binding.recShowcase.layoutManager = LinearLayoutManager(context)
         binding.recShowcase.setHasFixedSize(false)
         return binding.root
